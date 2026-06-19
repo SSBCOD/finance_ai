@@ -25,9 +25,26 @@ jobs:
           cd finance_frontend
           npm run build
 
+      - name: Debug runner environment
+        run: |
+          pwd
+          ls -la
+          git --version || true
+          echo "--- git config ---"
+          git config --list || true
+          echo "--- remotes ---"
+          git remote -v || true
+          echo "--- dist exists ---"
+          ls -la finance_frontend || true
+          ls -la finance_frontend/dist || true
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./finance_frontend/dist
           publish_branch: gh-pages
+          # set committer info to avoid git failures about user identity
+          user_name: github-actions[bot]
+          user_email: 41898282+github-actions[bot]@users.noreply.github.com
+          commit_message: "Deploy frontend via GitHub Actions"
