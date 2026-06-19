@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-dark-950 text-dark-100 font-sans antialiased;
+    min-height: 100vh;
+  }
+
+  ::selection {
+    @apply bg-primary-500/25 text-white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-dark-700 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-dark-600;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-dark-900 border border-dark-800 rounded-2xl;
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-colors duration-200 hover:border-dark-700;
+  }
+
+  .gradient-text {
+    @apply text-white;
+  }
+
+  .btn-primary {
+    @apply px-5 py-3 bg-primary-500 text-white font-medium rounded-xl
+           hover:bg-primary-400 transition-colors duration-200
+           active:scale-[0.99] disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply px-5 py-3 bg-dark-800 text-dark-100 font-medium rounded-xl border border-dark-700
+           hover:bg-dark-700 hover:border-dark-600 transition-colors duration-200 active:scale-[0.99];
+  }
+
+  .btn-ghost {
+    @apply px-4 py-2 text-dark-300 hover:text-white hover:bg-dark-800 rounded-lg transition-colors duration-200;
+  }
+
+  .btn-icon {
+    @apply p-2.5 rounded-xl bg-dark-800 text-dark-400 hover:text-white hover:bg-dark-700 transition-colors duration-200;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 bg-dark-800 border border-dark-700 rounded-xl text-white
+           placeholder:text-dark-500 focus:outline-none focus:border-primary-500
+           transition-colors duration-200;
+  }
+
+  .input-label {
+    @apply block text-sm font-medium text-dark-300 mb-2;
+  }
+
+  .stat-card {
+    @apply glass-card p-6 relative overflow-hidden;
+  }
+
+  .stat-card::before {
+    content: none;
+  }
+
+  .nav-item {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-xl text-dark-400 font-medium
+           hover:text-white hover:bg-dark-800 transition-colors duration-200;
+  }
+
+  .nav-item.active {
+    @apply text-white bg-dark-800;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium;
+  }
+
+  .badge-income {
+    @apply bg-income-500/15 text-income-400;
+  }
+
+  .badge-expense {
+    @apply bg-expense-500/15 text-expense-400;
+  }
+
+  .chat-bubble-user {
+    @apply bg-primary-600 text-white rounded-2xl rounded-br-md px-4 py-3;
+  }
+
+  .chat-bubble-ai {
+    @apply bg-dark-800 text-dark-100 rounded-2xl rounded-bl-md px-4 py-3 border border-dark-700;
+  }
+
+  .bank-input {
+    @apply w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900
+           placeholder:text-slate-400 focus:outline-none focus:border-emerald-600
+           transition-colors duration-200;
+  }
+}

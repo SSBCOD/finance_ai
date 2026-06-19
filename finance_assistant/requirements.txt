@@ -1,0 +1,19 @@
+# Django и REST Framework
+Django>=4.2,<5.0
+djangorestframework>=3.14.0
+djangorestframework-simplejwt>=5.3.0
+
+# База данных
+psycopg2-binary>=2.9.9  # для PostgreSQL (опционально)
+
+# CORS
+django-cors-headers>=4.3.0
+
+# Переменные окружения
+python-dotenv>=1.0.0
+
+# HTTP запросы для Groq API
+requests>=2.31.0
+
+# Валидация
+django-filter>=23.5
