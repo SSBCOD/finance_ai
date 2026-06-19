@@ -18,6 +18,22 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+const getApiErrorMessage = (error) => {
+  if (!error.response) {
+    return 'Сервер недоступен. Проверьте адрес API в переменной VITE_API_URL.';
+  }
+
+  if (error.response.data?.detail) {
+    return error.response.data.detail;
+  }
+
+  if (typeof error.response.data === 'string') {
+    return error.response.data;
+  }
+
+  return 'Ошибка соединения с сервером. Попробуйте ещё раз.';
+};
+
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
@@ -41,6 +57,14 @@ api.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+export const authAPI = {
+  register: (data) => api.post('/users/register/', data),
+  login: (data) => api.post('/users/login/', data),
+  getProfile: () => api.get('/users/profile/'),
+  updateProfile: (data) => api.patch('/users/profile/', data),
+  changePassword: (data) => api.post('/users/change-password/', data),
+};
 
 export const authAPI = {
   register: (data) => api.post('/users/register/', data),

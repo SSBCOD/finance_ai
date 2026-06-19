@@ -198,12 +198,22 @@ SIMPLE_JWT = {
 # =============================================================================
 # CORS SETTINGS
 # =============================================================================
-CORS_ALLOWED_ORIGINS = [
+DEFAULT_CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     "http://localhost:5173",  # Vite default
     "http://127.0.0.1:5173",
 ]
+
+CORS_ALLOWED_ORIGINS = [
+    origin.strip()
+    for origin in os.getenv(
+        'CORS_ALLOWED_ORIGINS',
+        ','.join(DEFAULT_CORS_ALLOWED_ORIGINS),
+    ).split(',')
+    if origin.strip()
+]
+CORS_ALLOW_ALL_ORIGINS = os.getenv('CORS_ALLOW_ALL_ORIGINS', 'False').lower() == 'true'
 CORS_ALLOW_CREDENTIALS = True
 
 
